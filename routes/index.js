@@ -118,7 +118,7 @@ app.post("/schedule", (req, res) => {
 
     switch (req.body.type) {
         case 'monthlycheck':
-            var a = new Cron(new Date(date), function () {
+            new Cron(new Date(date), function () {
                 sendScheduleNotification(title, body, token).then(() => {
                     console.log('job done')
                 })
