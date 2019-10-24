@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "name": "node_push",
+  "builds": [
+    { "src": "index.js", "use": "@now/node-server" }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.js",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/send",
+      "dest": "/index.js",
+      "methods": ["POST"]
+    },
+    {
+      "src": "/schedule",
+      "dest": "/index.js",
+      "methods": ["POST"]
+    }
+  ]
+}

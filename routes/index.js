@@ -12,6 +12,14 @@ var Cron = require('cron').CronJob;
 
 //POST REQUEST 
 
+app.get("/", (req, res) => {
+
+    res.json('Welcome to node push app')
+
+})
+
+
+
 
 app.post("/send", (req, res) => {
 
