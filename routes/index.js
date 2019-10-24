@@ -121,10 +121,8 @@ app.post("/schedule", (req, res) => {
             var a = new Cron(new Date(date), function () {
                 sendScheduleNotification(title, body, token).then(() => {
                     console.log('job done')
-                    a.stop()
                 })
             }, null, true);
-            a.start()
             res.json('job start')
             break;
 
