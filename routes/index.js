@@ -97,7 +97,7 @@ async function sendScheduleNotification(title, body, token) {
     // Actually send the message
     return sender.send(message, { registrationTokens: regTokens }, function (err, response) {
         if (err) console.error(err);
-        else return response;
+        else response;
     });
 }
 
@@ -120,10 +120,12 @@ app.post("/schedule", (req, res) => {
         case 'monthlycheck':
             var a = new Cron(new Date(date), function () {
                 sendScheduleNotification(title, body, token).then(() => {
+                    console.log('job done')
                     a.stop()
                 })
             }, null, true);
             a.start()
+            res.json('job start')
             break;
 
         case 'monthlyads':
@@ -161,7 +163,6 @@ app.post("/schedule", (req, res) => {
 
 
 
-    res.json('ok')
 })
 
 
