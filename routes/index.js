@@ -118,11 +118,12 @@ app.post("/schedule", (req, res) => {
 
     switch (req.body.type) {
         case 'monthlycheck':
-            new Cron(new Date(date), function () {
+            var a = new Cron(new Date(date), function () {
                 sendScheduleNotification(title, body, token).then(() => {
-                    // a.stop
+                    a.stop()
                 })
             }, null, true);
+            a.start()
             break;
 
         case 'monthlyads':
